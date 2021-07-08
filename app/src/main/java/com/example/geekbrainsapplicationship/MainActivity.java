@@ -30,13 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        btn2 = (Button) findViewById(R.id.button2);
-        btn2.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v2) {
-            Intent intent = new Intent(v2.getContext(), MainActivity2.class);
+        btn2 = (Button) findViewById(R.id.btnStartActivity2);
+        btn2.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), MainActivity2.class);
             startActivity(intent);
-            }
         });
     }
 
