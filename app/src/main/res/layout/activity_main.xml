@@ -27,7 +27,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:adjustViewBounds="true"
                 />
-            
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/field_start"
+                app:layout_constraintEnd_toStartOf="@+id/fourth_column_end"
+                app:layout_constraintStart_toStartOf="@+id/thirst_column_start"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/field_start"
                 android:layout_width="0dp"
