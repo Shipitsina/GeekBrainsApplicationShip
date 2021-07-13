@@ -1,9 +1,10 @@
 package com.example.geekbrainsapplicationship;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
+import android.os.Parcelable;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -11,22 +12,44 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Calculator calculator;
+    public static final String PARAM_RESULT = "PARAM_RESULT";
     TextView tv;
     HashMap<Button, String> numbersButton = new HashMap<>();
     HashMap<Button, String> operatorsButton = new HashMap<>();
+    private String param;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initButton ();
+        tv = (TextView) findViewById(R.id.textView);
 
+        if (savedInstanceState == null) {
+            calculator = new Calculator();
+        } else {
+            calculator = savedInstanceState.getParcelable(PARAM_RESULT);
+        }
+        tv.setText(calculator.getNum());
+        initButton ();
     }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(PARAM_RESULT, calculator);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
 
     protected void initButton() {
 
-        tv = (TextView) findViewById(R.id.textView);
 
         numbersButton.put((Button) findViewById(R.id.one), "1");
         numbersButton.put((Button) findViewById(R.id.two), "2");
@@ -39,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
         numbersButton.put((Button) findViewById(R.id.nine), "9");
         numbersButton.put((Button) findViewById(R.id.zero), "0");
 
-        Calculator calculator = new Calculator();
 
         for (Map.Entry<Button, String> o : numbersButton.entrySet()) {
             o.getKey().setOnClickListener(v -> {
                 calculator.setField(o.getValue());
                     tv.setText(calculator.getNum());
+                param = calculator.getNum();
                 }
             );
         }
@@ -83,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         btnResult.setOnClickListener(v -> {
             calculator.result();
             tv.setText(calculator.getNum());
+
         });
     }
 }

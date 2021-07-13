@@ -1,6 +1,9 @@
 package com.example.geekbrainsapplicationship;
 
-public class Calculator {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Calculator implements Parcelable {
 
     private String num1 = new String("0");
     private String num2 = new String("0");
@@ -17,6 +20,27 @@ public class Calculator {
         else
             num = num1;
     }
+
+    protected Calculator(Parcel in) {
+        num1 = in.readString();
+        num2 = in.readString();
+        num = in.readString();
+        operator = in.readString();
+        hasntDot = in.readByte() != 0;
+        hasOperation = in.readByte() != 0;
+    }
+
+    public static final Creator<Calculator> CREATOR = new Creator<Calculator>() {
+        @Override
+        public Calculator createFromParcel(Parcel in) {
+            return new Calculator(in);
+        }
+
+        @Override
+        public Calculator[] newArray(int size) {
+            return new Calculator[size];
+        }
+    };
 
     public String getNum() {
         return num;
@@ -108,5 +132,15 @@ public class Calculator {
             hasntDot = false;
             hasOperation = false;
         }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(num);
     }
 }
