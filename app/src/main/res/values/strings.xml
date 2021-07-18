@@ -18,4 +18,6 @@
     <string name="division">÷</string>
     <string name="equals">=</string>
     <string name="c">C</string>
+    <string name="material_light">light</string>
+    <string name="material_dark">dark</string>
 </resources>

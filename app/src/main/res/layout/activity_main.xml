@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+>
 
 
     <ScrollView
@@ -28,17 +29,39 @@
                 android:adjustViewBounds="true"
                 />
 
+
+            <RadioGroup
+                android:id="@+id/radioButtons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/thirst_column_start"
+                app:layout_constraintTop_toTopOf="parent"
+                >
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioButtonLight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/material_light" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioButtonDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/material_dark" />
+            </RadioGroup>
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:textColor="#000000"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/field_start"
                 app:layout_constraintEnd_toStartOf="@+id/fourth_column_end"
                 app:layout_constraintStart_toStartOf="@+id/thirst_column_start"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:backgroundTint="#FFFFFF"
+                android:background="#40000000"/>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/field_start"
@@ -262,7 +285,7 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/MyCoolStyleForOperationButton"
                 android:id="@+id/plus"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:text="@string/plus"
                 app:layout_constraintBottom_toTopOf="@+id/sixth_line_start"
@@ -273,7 +296,7 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/MyCoolStyleForOperationButton"
                 android:id="@+id/minus"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/minus"
                 app:layout_constraintBottom_toTopOf="@+id/fourth_line_start"
@@ -284,7 +307,7 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/MyCoolStyleForOperationButton"
                 android:id="@+id/multiply"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/multiply"
                 app:layout_constraintBottom_toTopOf="@+id/third_line_start"
@@ -295,7 +318,7 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/MyCoolStyleForOperationButton"
                 android:id="@+id/divide"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/division"
                 app:layout_constraintBottom_toTopOf="@+id/second_line_start"
