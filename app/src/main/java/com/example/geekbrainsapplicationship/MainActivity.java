@@ -50,15 +50,15 @@ public class MainActivity extends AppCompatActivity {
             calculator = savedInstanceState.getParcelable(PARAM_RESULT);
         }
         tv.setText(calculator.getNum());
-        initButton ();
+        initButton();
     }
 
     private void initRadioButtons() {
-        findViewById(R.id.radioButtonLight).setOnClickListener(v ->{
+        findViewById(R.id.radioButtonLight).setOnClickListener(v -> {
             setAppTheme(AppThemeLightCodeStyle);
             recreate();
         });
-        findViewById(R.id.radioButtonDark).setOnClickListener(v ->{
+        findViewById(R.id.radioButtonDark).setOnClickListener(v -> {
             setAppTheme(AppThemeDarkCodeStyle);
             recreate();
         });
@@ -66,25 +66,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private int codeStyleToStyle(){
+    private int codeStyleToStyle() {
         return codeStyleToStyleId(getCodeStyle());
     }
+
     private int getCodeStyle() {
         SharedPreferences preferences = getSharedPreferences(NAME_SHARED_PREFERENCE, MODE_PRIVATE);
         return preferences.getInt(appTheme, R.style.AppThemeLight);
     }
 
-    private void setAppTheme(int codeStyle){
+    private void setAppTheme(int codeStyle) {
         SharedPreferences preferences = getSharedPreferences(NAME_SHARED_PREFERENCE, MODE_PRIVATE);
         preferences.edit().putInt(appTheme, codeStyle).apply();
     }
 
-    private int codeStyleToStyleId(int codeStyle){
-        switch (codeStyle){
+    private int codeStyleToStyleId(int codeStyle) {
+        switch (codeStyle) {
             case AppThemeDarkCodeStyle:
                 return R.style.AppThemeDark;
             case AppThemeLightCodeStyle:
-                default:
+            default:
                 return R.style.AppThemeLight;
         }
     }
@@ -118,10 +119,10 @@ public class MainActivity extends AppCompatActivity {
 
         for (Map.Entry<Button, String> o : numbersButton.entrySet()) {
             o.getKey().setOnClickListener(v -> {
-                calculator.setField(o.getValue());
-                    tv.setText(calculator.getNum());
-                param = calculator.getNum();
-                }
+                        calculator.setField(o.getValue());
+                        tv.setText(calculator.getNum());
+                        param = calculator.getNum();
+                    }
             );
         }
 

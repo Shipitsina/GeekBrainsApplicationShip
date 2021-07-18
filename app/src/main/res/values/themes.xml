@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
     <style name="MyCoolStyleForOperationButton" parent="Theme.GeekBrainsApplicationShip">
         <item name="android:textSize">@dimen/textSize</item>
         <item name="android:textStyle">bold</item>
@@ -30,7 +31,7 @@
     </style>
 
     <style name="AppThemeLight" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <item name="android:background"> @color/purple_200</item>
+        <item name="android:background">@color/purple_200</item>
         <item name="colorPrimary">#ff6090</item>
         <item name="android:colorPrimaryDark">#b0003a</item>
         <item name="android:colorAccent">#ff6090</item>
