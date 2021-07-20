@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,18 +18,18 @@
                 android:id="@+id/calc_background"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/for_calc"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:adjustViewBounds="true"
-                />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/for_calc_land" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
+                android:background="#40000000"
+                android:backgroundTint="#FFFFFF"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/field_start"
@@ -36,308 +37,299 @@
                 app:layout_constraintStart_toStartOf="@+id/thirst_column_start"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <RadioGroup
+                android:id="@+id/radioButtons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@+id/thirst_column_start"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioButtonLight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/material_light" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioButtonDark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/material_dark" />
+            </RadioGroup>
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/field_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintGuide_begin="50dp"
                 android:orientation="horizontal"
-                />
+                app:layout_constraintGuide_begin="50dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/second_line_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintGuide_begin="100dp"
                 android:orientation="horizontal"
-                />
+                app:layout_constraintGuide_begin="100dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/third_line_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintGuide_begin="150dp"
                 android:orientation="horizontal"
-                />
+                app:layout_constraintGuide_begin="150dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/fourth_line_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintGuide_begin="200dp"
                 android:orientation="horizontal"
-                />
+                app:layout_constraintGuide_begin="200dp" />
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/fifth_line_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintGuide_begin="250dp"
                 android:orientation="horizontal"
-                />
+                app:layout_constraintGuide_begin="250dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/sixth_line_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintGuide_begin="300dp"
                 android:orientation="horizontal"
-                />
+                app:layout_constraintGuide_begin="300dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/thirst_column_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintGuide_begin="100dp"
                 android:orientation="vertical"
-                />
+                app:layout_constraintGuide_begin="100dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/second_column_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintGuide_begin="200dp"
                 android:orientation="vertical"
-                />
+                app:layout_constraintGuide_begin="190dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/third_column_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintGuide_begin="290dp"
                 android:orientation="vertical"
-                />
+                app:layout_constraintGuide_begin="280dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/fourth_column_start"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintGuide_begin="380dp"
                 android:orientation="vertical"
-                />
+                app:layout_constraintGuide_begin="370dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/fourth_column_end"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintGuide_end="130dp"
                 android:orientation="vertical"
-                />
+                app:layout_constraintGuide_end="130dp" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/seven"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="7"
-                android:textSize="16sp"
+                android:text="@string/_7"
                 app:layout_constraintBottom_toTopOf="@+id/second_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/second_column_start"
                 app:layout_constraintStart_toStartOf="@+id/thirst_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/field_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/eight"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="8"
-                android:textSize="16sp"
+                android:text="@string/_8"
                 app:layout_constraintBottom_toTopOf="@+id/second_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/third_column_start"
                 app:layout_constraintStart_toStartOf="@+id/second_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/field_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/nine"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="9"
-                android:textSize="16sp"
+                android:text="@string/_9"
                 app:layout_constraintBottom_toTopOf="@+id/second_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/fourth_column_start"
                 app:layout_constraintStart_toStartOf="@+id/third_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/field_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/six"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="6"
-                android:textSize="16sp"
+                android:text="@string/_6"
                 app:layout_constraintBottom_toTopOf="@+id/third_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/fourth_column_start"
                 app:layout_constraintStart_toStartOf="@+id/third_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/second_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/five"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="5"
-                android:textSize="16sp"
+                android:text="@string/_5"
                 app:layout_constraintBottom_toTopOf="@+id/third_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/third_column_start"
                 app:layout_constraintStart_toStartOf="@+id/second_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/second_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/four"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="4"
-                android:textSize="16sp"
+                android:text="@string/_4"
                 app:layout_constraintBottom_toTopOf="@+id/third_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/second_column_start"
                 app:layout_constraintStart_toStartOf="@+id/thirst_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/second_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/one"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="1"
-                android:textSize="16sp"
+                android:text="@string/_1"
                 app:layout_constraintBottom_toTopOf="@+id/fourth_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/second_column_start"
                 app:layout_constraintStart_toStartOf="@+id/thirst_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/third_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/two"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="2"
-                android:textSize="16sp"
+                android:text="@string/_2"
                 app:layout_constraintBottom_toTopOf="@+id/fourth_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/third_column_start"
                 app:layout_constraintStart_toStartOf="@+id/second_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/third_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/three"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="3"
-                android:textSize="16sp"
+                android:text="@string/_3"
                 app:layout_constraintBottom_toTopOf="@+id/fourth_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/fourth_column_start"
                 app:layout_constraintStart_toStartOf="@+id/third_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/third_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/dot"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text=","
-                android:textSize="16sp"
+                android:text="@string/dot"
                 app:layout_constraintBottom_toTopOf="@+id/fifth_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/fourth_column_start"
                 app:layout_constraintStart_toStartOf="@+id/third_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/fourth_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/zero"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="0"
-                android:textSize="16sp"
+                android:text="@string/_0"
                 app:layout_constraintBottom_toTopOf="@+id/fifth_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/third_column_start"
                 app:layout_constraintStart_toStartOf="@+id/second_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/fourth_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/plus_minus"
+                style="@style/MyCoolStyleForNumberButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFFFFF"
-                android:text="+/-"
-                android:textSize="16sp"
+                android:text="@string/plus_minus"
                 app:layout_constraintBottom_toTopOf="@+id/fifth_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/second_column_start"
                 app:layout_constraintStart_toStartOf="@+id/thirst_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/fourth_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/plus"
+                style="@style/MyCoolStyleForOperationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:backgroundTint="#B6AEAE"
-                android:text="+"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:text="@string/plus"
                 app:layout_constraintBottom_toTopOf="@+id/sixth_line_start"
                 app:layout_constraintEnd_toEndOf="@+id/fourth_column_end"
                 app:layout_constraintStart_toStartOf="@+id/fourth_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/fourth_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/minus"
+                style="@style/MyCoolStyleForOperationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#B6AEAE"
-                android:text="-"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:text="@string/minus"
                 app:layout_constraintBottom_toTopOf="@+id/fourth_line_start"
                 app:layout_constraintEnd_toEndOf="@+id/fourth_column_end"
                 app:layout_constraintStart_toStartOf="@+id/fourth_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/third_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/multiply"
+                style="@style/MyCoolStyleForOperationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#B6AEAE"
-                android:text="*"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:text="@string/multiply"
                 app:layout_constraintBottom_toTopOf="@+id/third_line_start"
                 app:layout_constraintEnd_toEndOf="@+id/fourth_column_end"
                 app:layout_constraintStart_toStartOf="@+id/fourth_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/second_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/divide"
+                style="@style/MyCoolStyleForOperationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#B6AEAE"
-                android:text="÷"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:text="@string/division"
                 app:layout_constraintBottom_toTopOf="@+id/second_line_start"
                 app:layout_constraintEnd_toEndOf="@+id/fourth_column_end"
                 app:layout_constraintStart_toStartOf="@+id/fourth_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/field_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/equals"
+                style="@style/MyCoolStyleForOperationButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#00FF0D"
-                android:text="="
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:text="@string/equals"
                 app:layout_constraintBottom_toTopOf="@+id/sixth_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/third_column_start"
                 app:layout_constraintStart_toStartOf="@+id/thirst_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/fifth_line_start" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/clear"
+                style="@style/MyCoolStyleForOperationButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FF0000"
-                android:text="C"
+                android:text="@string/c"
                 app:layout_constraintBottom_toTopOf="@+id/sixth_line_start"
                 app:layout_constraintEnd_toStartOf="@+id/fourth_column_start"
                 app:layout_constraintStart_toStartOf="@+id/third_column_start"
