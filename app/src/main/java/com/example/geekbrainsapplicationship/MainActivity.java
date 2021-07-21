@@ -1,6 +1,7 @@
 package com.example.geekbrainsapplicationship;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,8 +17,12 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String NAME_SHARED_PREFERENCE = "NAME_SHARED_PREFERENCE";
     private Calculator calculator;
     public static final String PARAM_RESULT = "PARAM_RESULT";
+    public static final String PARAM_THEME = "PARAM_THEME";
+    private static final int AppThemeLightCodeStyle = 0;
+    private static final int AppThemeDarkCodeStyle = 1;
 
     TextView tv;
     HashMap<Button, String> numbersButton = new HashMap<>();
@@ -26,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        int currentThemeCode = getCodeStyle();
+        setTheme(codeStyleToStyleId(currentThemeCode));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -39,7 +47,15 @@ public class MainActivity extends AppCompatActivity {
         }
         tv.setText(calculator.getNum());
         initButton();
+
     }
+
+    private int getCodeStyle() {
+        SharedPreferences preferences = getSharedPreferences(NAME_SHARED_PREFERENCE, MODE_PRIVATE);
+        int themeCode = getIntent().getIntExtra(PARAM_THEME,R.style.AppThemeLight);
+        return preferences.getInt(PARAM_THEME, themeCode);
+    }
+
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
@@ -50,6 +66,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    private int codeStyleToStyleId(int codeStyle) {
+        switch (codeStyle) {
+            case AppThemeDarkCodeStyle:
+                return R.style.AppThemeDark;
+            case AppThemeLightCodeStyle:
+            default:
+                return R.style.AppThemeLight;
+        }
     }
 
 
@@ -120,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
             // метод запускает активити по указанному intent
             startActivity(intent);
         });
+
     }
 }
 
