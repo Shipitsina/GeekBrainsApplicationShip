@@ -3,6 +3,7 @@ package com.example.geekbrainsapplicationship;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -111,6 +112,13 @@ public class MainActivity extends AppCompatActivity {
             calculator.result();
             tv.setText(calculator.getNum());
 
+        });
+        Button btnSettings = (Button) findViewById(R.id.settings);
+        btnSettings.setOnClickListener(v -> {
+            // intent - намерение сменить активити на ChangeThemeActivity.class
+            Intent intent = new Intent(this, ChangeThemeActivity.class);
+            // метод запускает активити по указанному intent
+            startActivity(intent);
         });
     }
 }
