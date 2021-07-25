@@ -28,26 +28,6 @@
                 app:srcCompat="@drawable/for_calc" />
 
 
-            <RadioGroup
-                android:id="@+id/radioButtons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="@+id/thirst_column_start"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/radioButtonLight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/material_light" />
-
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/radioButtonDark"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/material_dark" />
-            </RadioGroup>
-
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
@@ -336,6 +316,17 @@
                 app:layout_constraintEnd_toStartOf="@+id/fourth_column_start"
                 app:layout_constraintStart_toStartOf="@+id/third_column_start"
                 app:layout_constraintTop_toBottomOf="@+id/fifth_line_start" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/settings"
+                style="@style/MyCoolStyleForOperationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,8 +1,10 @@
 package com.example.geekbrainsapplicationship;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -15,13 +17,10 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String NAME_SHARED_PREFERENCE = "SETTINGS";
-    private static final String appTheme = "APP_THEME";
-
-
+    private static final String NAME_SHARED_PREFERENCE = "NAME_SHARED_PREFERENCE";
     private Calculator calculator;
     public static final String PARAM_RESULT = "PARAM_RESULT";
-
+    public static final String PARAM_THEME = "PARAM_THEME";
     private static final int AppThemeLightCodeStyle = 0;
     private static final int AppThemeDarkCodeStyle = 1;
 
@@ -32,15 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
         int currentThemeCode = getCodeStyle();
-        int currentThemeResId = codeStyleToStyleId(currentThemeCode);
-        setTheme(currentThemeResId);
+        setTheme(codeStyleToStyleId(currentThemeCode));
 
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        initRadioButtons();
 
         tv = (TextView) findViewById(R.id.textView);
 
@@ -51,44 +47,15 @@ public class MainActivity extends AppCompatActivity {
         }
         tv.setText(calculator.getNum());
         initButton();
-    }
 
-    private void initRadioButtons() {
-        findViewById(R.id.radioButtonLight).setOnClickListener(v -> {
-            setAppTheme(AppThemeLightCodeStyle);
-            recreate();
-        });
-        findViewById(R.id.radioButtonDark).setOnClickListener(v -> {
-            setAppTheme(AppThemeDarkCodeStyle);
-            recreate();
-        });
-
-    }
-
-
-    private int codeStyleToStyle() {
-        return codeStyleToStyleId(getCodeStyle());
     }
 
     private int getCodeStyle() {
         SharedPreferences preferences = getSharedPreferences(NAME_SHARED_PREFERENCE, MODE_PRIVATE);
-        return preferences.getInt(appTheme, R.style.AppThemeLight);
+        int themeCode = getIntent().getIntExtra(PARAM_THEME,R.style.AppThemeLight);
+        return preferences.getInt(PARAM_THEME, themeCode);
     }
 
-    private void setAppTheme(int codeStyle) {
-        SharedPreferences preferences = getSharedPreferences(NAME_SHARED_PREFERENCE, MODE_PRIVATE);
-        preferences.edit().putInt(appTheme, codeStyle).apply();
-    }
-
-    private int codeStyleToStyleId(int codeStyle) {
-        switch (codeStyle) {
-            case AppThemeDarkCodeStyle:
-                return R.style.AppThemeDark;
-            case AppThemeLightCodeStyle:
-            default:
-                return R.style.AppThemeLight;
-        }
-    }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
@@ -99,6 +66,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    private int codeStyleToStyleId(int codeStyle) {
+        switch (codeStyle) {
+            case AppThemeDarkCodeStyle:
+                return R.style.AppThemeDark;
+            case AppThemeLightCodeStyle:
+            default:
+                return R.style.AppThemeLight;
+        }
     }
 
 
@@ -162,6 +139,14 @@ public class MainActivity extends AppCompatActivity {
             tv.setText(calculator.getNum());
 
         });
+        Button btnSettings = (Button) findViewById(R.id.settings);
+        btnSettings.setOnClickListener(v -> {
+            // intent - намерение сменить активити на ChangeThemeActivity.class
+            Intent intent = new Intent(this, ChangeThemeActivity.class);
+            // метод запускает активити по указанному intent
+            startActivity(intent);
+        });
+
     }
 }
 
